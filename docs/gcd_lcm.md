@@ -12,13 +12,13 @@
 ### C/C++ (再帰関数)
 
 ```cpp
-typedef long long LL;
+typedef long long ll;
 
-LL gcd(LL x, LL y) {
+ll gcd(ll x, ll y) {
   return y ? gcd(y, x % y) : x;
 }
 
-LL lcm(LL x, LL y) {
+ll lcm(ll x, ll y) {
   return x/gcd(x, y)*y;
 }
 ```
@@ -26,18 +26,18 @@ LL lcm(LL x, LL y) {
 ### C/C++ (非再帰)
 
 ```cpp
-typedef long long LL;
+typedef long long ll;
 
-LL gcd(LL x, LL y) {
+ll gcd(ll x, ll y) {
   while (y != 0) {
-    LL r = x % y;
+    ll r = x % y;
     x = y;
     y = r;
-}
+  }
   return x;
 }
 
-LL lcm(LL x, LL y) {
+ll lcm(ll x, ll y) {
   return x/gcd(x, y)*y;
 }
 ```
@@ -49,7 +49,7 @@ def gcd(x, y):
     return x if y == 0 else gcd(y, x % y)
 
 def lcm(x, y):
-    return x/gcd(x, y)*y
+    return x//gcd(x, y)*y
 ```
 
 ### Python3 (非再帰)
@@ -61,7 +61,7 @@ def gcd(x, y):
     return x
 
 def lcm(x, y):
-    return x/gcd(x, y)*y
+    return x//gcd(x, y)*y
 ```
 
 ## 解説
@@ -98,13 +98,21 @@ x = y * q + x % y
 
 最大公約数は幅, 高さがa, b の長方形を埋め尽くすことができるような正方形のなかで最大のものの一辺の長さに等しい.
 
+ちなみに, C++, Python3 ともに標準ライブラリに gcd を求める関数が存在する.
 
+C++ では標準ヘッダである algorithm をインクルードすると,  `__gcd()` という関数が使え,
+Python3 では version 3.6未満では math.gcd() がそれ以外では fractions.gcd() が使える.
 
-
+標準ライブラリの gcd を使うと, バージョンによって import するモジュールをどれにするか意識する必要が生じるため,
+自前の実装を使うほうが良いかもしれない.
 
 ## 使用例
 
-- 
+- http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0005&lang=jp
+    - http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559003 (C++, 再帰)
+    - http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559018 (C++, 非再帰)
+    - http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559039 (Python3, 再帰)
+    - http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559048 (Python3, 非再帰)
 
 ## 参考文献
 
