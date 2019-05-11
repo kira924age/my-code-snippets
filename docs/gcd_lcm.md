@@ -66,53 +66,64 @@ def lcm(x, y):
 
 ## 解説
 
+* アルゴリズムの正当性の証明
+
 ユークリッドの互除法は2つの自然数 x, y について, gcd(x, y) が gcd(y, x % y) に等しいことを利用し, 第二引数が 0 になるまで操作を繰り返すことで最大公約数を求めている.
 
 gcd(x, y) が gcd(y, x % y) と等しいことを示してみる.
 
-d = gcd(y, x % y) とする.
-このとき d は y および x % y の公約数である.
+自然数 x, y について, x を y で割った商を q, 余りを r とすると
 
-適当な整数を q とすると
+$$ x = q \times y + r $$
 
-x = y * q + x % y で, y * q および x % y の公約数は d であるから d は x の公約数でもある.
+ここである自然数 d を y と r の両方を割り切ることができる, すなわち y と r の公約数であるとする.
 
-したがって, gcd(y, x % y) の最大公約数が d なら gcd(x, y) の最大公約数も d となる.
+このとき, d は qy + r = x も割り切ることができるため, x を割り切ることもできる. よって, d は x と y の公約数でもある.
 
-次にその逆を示す.
+ゆえに, ある自然数 d が y と r の公約数ならば d は x と y の公約数でもある.
 
-すなわち, d = gcd(x, y) としたとき
-d = gcd(y, x % y) を示す.
+次に, 逆を示す.
 
-適当な整数を q とすると
+ある自然数 d が x と y の公約数であるとする.
+このとき $x - q \times y = r$ も d で割り切れるので
+d は y と r を割り切る.
 
-x = y * q + x % y
+ゆえに, ある自然数 d が x と y の公約数ならば d は y と r の公約数でもある.
 
-が成り立つ.
-
-このとき, d (= gcd(x, y)) は x, y を割り切るので x % y = x - y * q も割り切る.
-
-以上のことから gcd(x, y) = gcd(y, x % y) であることが示された.
+以上のことから, x と y の公約数の集合は y と x % y の公約数の集合と等しいことが示され gcd(x, y) = gcd(y, x % y) も一致することが分かる.
 
 - 図形的な捉え方
 
 最大公約数は幅, 高さがa, b の長方形を埋め尽くすことができるような正方形のなかで最大のものの一辺の長さに等しい.
 
-ちなみに, C++, Python3 ともに標準ライブラリに gcd を求める関数が存在する.
+![](./images/gcd.png)
+
+上の画像のように長方形から正方形を切り落としていき最後に残った小さな正方形の一辺が gcd(a, b) となる.
+
+* 標準ライブラリ
+
+C++, Python3 ともに標準ライブラリに gcd を求める関数が存在する.
 
 C++ では標準ヘッダである algorithm をインクルードすると,  `__gcd()` という関数が使え,
 Python3 では version 3.6未満では math.gcd() がそれ以外では fractions.gcd() が使える.
 
-標準ライブラリの gcd を使うと, バージョンによって import するモジュールをどれにするか意識する必要が生じるため,
+標準ライブラリの gcd を使うと, バージョンによって import するモジュールがどれであるかを意識する必要が生じるため,
 自前の実装を使うほうが良いかもしれない.
 
 ## 使用例
 
-- http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0005&lang=jp
-    - http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559003 (C++, 再帰)
-    - http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559018 (C++, 非再帰)
-    - http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559039 (Python3, 再帰)
-    - http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559048 (Python3, 非再帰)
+- [http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0005&lang=jp](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0005&lang=jp)
+    - [http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559003](http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559003) (C++, 再帰)
+    - [http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559018](http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559018) (C++, 非再帰)
+    - [http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559039](http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559039) (Python3, 再帰)
+    - [http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559048](http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3559048) (Python3, 非再帰)
+
+
+## 関連する問題
+
+- [https://atcoder.jp/contests/abc125/tasks/abc125_c](https://atcoder.jp/contests/abc125/tasks/abc125_c)
+
+- [https://atcoder.jp/contests/agc001/tasks/agc001_b](https://atcoder.jp/contests/agc001/tasks/agc001_b)
 
 ## 参考文献
 
