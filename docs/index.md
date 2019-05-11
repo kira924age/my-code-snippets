@@ -10,10 +10,3 @@ C/C++ および Python3 による実装例を載せています.
 
 - [最小公倍数・最大公約数 (Euclidean Algorithm)](./gcd_lcm)
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
-
