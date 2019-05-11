@@ -30,7 +30,7 @@ $ sudo pip3 install mkdocs-material
 - mathjax を使う
 
 ```
-$ pip install python-markdown-math
+$ sudo pip3 install python-markdown-math
 ```
 
 - ビルド
