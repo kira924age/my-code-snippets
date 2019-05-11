@@ -1,0 +1,13 @@
+site_name: My Code Snippets
+
+theme:
+    name: 'material'
+
+markdown_extensions:
+    - codehilite
+    - mdx_math:
+        enable_dollar_delimiter: true
+
+extra_javascript: 
+    - http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
