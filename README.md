@@ -1,6 +1,8 @@
 # my-code-snippets
 
-[MkDocs](https://github.com/mkdocs/mkdocs) で作成したコードスニペットをまとめたサイト.
+競プロや CTF でよく使うコード辺をまとめたやつ.
+
+[MkDocs](https://github.com/mkdocs/mkdocs) で作成した.
 
 ここにある Documents を Build するには Mkdocs が必要.
 

@@ -7,7 +7,12 @@ markdown_extensions:
     - codehilite
     - mdx_math:
         enable_dollar_delimiter: true
+    - admonition
 
 extra_javascript: 
-    - http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/config/TeX-AMS-MML_HTMLorMML-full.js
+
+site_author: kira924age
+copyright: Copyright © 2019 kira924age
 
