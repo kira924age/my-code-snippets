@@ -1,4 +1,8 @@
 site_name: My Code Snippets
+nav:
+    - Home: index.md
+    - 標準入出力 : input_output.md
+    - ユークリッドの互除法 : gcd_lcm.md
 
 theme:
     name: 'material'

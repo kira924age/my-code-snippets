@@ -1,10 +1,8 @@
 # Welcome to My Code Snippets
 
-## What is this?
-
 これは @kira924age が競技プログラミングや CTF でよく使うコード片をまとめたものです. MkDocs という静的サイトジェネレータを使って作成しました.
 
-C++, Go, Python3 による実装例を載せています.
+C++, Python3, Go による実装例を載せています.
 
 ## Basic
 
@@ -16,4 +14,7 @@ C++, Go, Python3 による実装例を載せています.
 
 ## Search
 
+- 二分探索 (Binary Search)
+
+## Graph
 
