@@ -125,7 +125,7 @@ Go で標準入力をとるとき, 一番楽な方法は `fmt.Scan` を使うこ
 しかし, `fmt.Scan` はとても遅く, `fmt.Scan` を使うと下記の例のようにアルゴリズム的に正しい解法でも
 入力がボトルネックとなり TLE となるケースも存在する.
 
-- [https://codeforces.com/contest/1203/submission/59936616](https://codeforces.com/contest/1203/submission/59936616)
+- [https://codeforces.com/contest/1203/submission/59936305](https://codeforces.com/contest/1203/submission/59936305)
 
 そこで以下のように, `bufio` の `Scanner` を用いて高速に読み込み, parse して値を返す関数を作成する.
 
@@ -174,51 +174,53 @@ func main() {
 !!! warning
     `bufio.Scanner` は1行あたり `bufio.MaxScanTokenSize` 分だけしか読み込めず, それ以降は無視される.
     `MaxScanTokenSize` はデフォルトで 64 * 1024 という値である.
-
-そこで, 文字列を読み込むときは, 与えられる文字列が 4000 文字程度までなら, 以下に示す `nextStr()` を
-それを超えるような長い文字列については, `readLine()` を用いると良い.
+    以下のように `Buffer` を使うと, `Scan` で使用される初期 buffer の最大サイズを指定できる.
+    buffer の最大サイズは int に収まる範囲である程度大きい 1e9 程度にしておけばいいだろう.
 
 ```go
 package main
- 
+
 import (
 	"bufio"
 	"fmt"
 	"os"
 	"strconv"
 )
- 
+
 var sc = bufio.NewScanner(os.Stdin)
- 
-func nextStr() string {
+
+func nextInt() int {
+	i, e := strconv.Atoi(nextString())
+	if e != nil {
+		panic(e)
+	}
+	return i
+}
+
+func nextInt64() int64 {
+	i, e := strconv.ParseInt(nextString(), 10, 64)
+	if e != nil {
+		panic(e)
+	}
+	return i
+}
+
+func nextString() string {
 	sc.Scan()
 	return sc.Text()
 }
- 
-var rdr = bufio.NewReaderSize(os.Stdin, 1000000)
- 
-func readLine() string {
-	buf := make([]byte, 0, 1000000)
-	for {
-		l, p, e := rdr.ReadLine()
-		if e != nil {
-			panic(e)
-		}
-		buf = append(buf, l...)
-		if !p {
-			break
-		}
-	}
-	return string(buf)
-}
- 
-func main() {
-	sc.Split(bufio.ScanWords)
-	//  
-}
 
+func main() {
+	sc.Buffer(make([]byte, 0), 1000000009)
+	sc.Split(bufio.ScanWords)
+	//
+}
 ```
- 
+
+これを使うと `fmt.Scan()` で TLE だった先程の問題も時間以内解くことができる.
+
+- [https://codeforces.com/contest/1203/submission/60132736](https://codeforces.com/contest/1203/submission/60132736)
+
 ## 使用例
 
 ### 空白区切りで入力が与えられたとき
