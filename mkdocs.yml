@@ -3,6 +3,7 @@ nav:
     - Home: index.md
     - 標準入出力 : input_output.md
     - ユークリッドの互除法 : gcd_lcm.md
+    - 素因数分解 : prime_factorization.md
 
 theme:
     name: 'material'
